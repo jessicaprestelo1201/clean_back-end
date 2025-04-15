@@ -1,10 +1,7 @@
-import { Router } from "express";
+const express = require('express');
+const router = express.Router();
+const postRoutes = require('./api/post.routes');
 
-const routes = Router();
+router.use('/api/posts', postRoutes);
 
-// Rota raiz para teste
-routes.get("/", (req, res) => {
-  return res.status(200).json({ message: "Vai Corinthians!" });
-});
-
-export default routes;
+module.exports = router;

@@ -1,16 +1,15 @@
-import express from "express";
-import { config } from "dotenv";
-
-import routes from "./controllers/routes/api/index.routes.js";
-
-config();
-
-const serverPort = process.env.PORT || 3000;
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const routes = require('./src/routes/index.routes');
 
 const app = express();
+const PORT = process.env.PORT || 3001;
+
+app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.listen(serverPort, () => {
-  console.log(`⚡ Server started on http://localhost:${serverPort}`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
