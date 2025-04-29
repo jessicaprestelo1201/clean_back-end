@@ -1,4 +1,4 @@
-import prisma from "../../prisma/client.js";
+import prisma from "../prisma/prisma.js";  // Ajuste o caminho conforme necessário
 
 const userModel = {
   // Criar um novo usuário
