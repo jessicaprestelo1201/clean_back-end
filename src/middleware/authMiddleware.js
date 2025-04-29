@@ -1,19 +1,26 @@
 import jwt from "jsonwebtoken";
 
 const authMiddleware = (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1];
+  const authHeader = req.headers.authorization;
 
-  if (!token) {
-    return res.status(401).json({ error: "Acesso negado. Token não fornecido." });
+  if (!authHeader) {
+    return res.status(401).json({ error: "Token não fornecido" });
   }
 
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  const [schema, token] = authHeader.split(" ");
+
+  if (schema !== "Bearer" || !token) {
+    return res.status(401).json({ error: "Token mal formatado" });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ error: "Token inválido" });
+    }
+
     req.userId = decoded.id;
     next();
-  } catch (error) {
-    res.status(401).json({ error: "Token inválido." });
-  }
+  });
 };
 
 export default authMiddleware;
