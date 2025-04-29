@@ -6,6 +6,11 @@ const userModel = {
     return await prisma.user.create({ data });
   },
 
+  // Buscar todos os usuários
+  async findAllUsers() {
+    return await prisma.user.findMany();
+  },
+
   // Buscar um usuário pelo email
   async findUserByEmail(email) {
     return await prisma.user.findUnique({ where: { email } });
