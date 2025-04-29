@@ -1,35 +1,110 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
-generator client {
-  provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-//
-
 generator client {
   provider = "prisma-client-js"
 }
+/// ## Gerador
+/// O bloco `generator` especifica o Prisma Client como a ferramenta a ser gerada.
+/// - `provider`: Especifica a biblioteca JavaScript do Prisma Client (`prisma-client-js`).
 
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+/// ## Fonte de Dados
+/// O bloco `datasource` define a conexão com o banco de dados.
+/// - `provider`: Especifica SQLite como o provedor do banco de dados.
+/// - `url`: A URL de conexão com o banco de dados é obtida da variável de ambiente `DATABASE_URL`.
 
-model Post {
-  id        Int      @id @default(autoincrement())
-  title     String
-  content   String
-  
-  createdAt DateTime @default(now())
-   @@map("posts")
+model Usuario {
+  id          String       @id @default(uuid())
+  nome        String
+  email       String       @unique
+  senha       String
+  idioma      String?
+  fotoPerfil  String?
+  verificado  Boolean      @default(false)
+  curtidas    Curtida[]
+  comentarios Comentario[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 }
+/// ## Modelo: Usuario
+/// Representa um usuário no sistema.
+/// - `id`: Um identificador único para o usuário, gerado automaticamente como UUID.
+/// - `nome`: O nome do usuário.
+/// - `email`: O email do usuário, que deve ser único.
+/// - `senha`: A senha do usuário.
+/// - `idioma`: O idioma preferido do usuário (opcional).
+/// - `fotoPerfil`: A URL da foto de perfil do usuário (opcional).
+/// - `verificado`: Um booleano indicando se o usuário está verificado (padrão: `false`).
+/// - `curtidas`: Um relacionamento de um-para-muitos com o modelo `Curtida`, representando as curtidas feitas pelo usuário.
+/// - `comentarios`: Um relacionamento de um-para-muitos com o modelo `Comentario`, representando os comentários feitos pelo usuário.
+/// - `createdAt`: O timestamp de quando o usuário foi criado (padrão: horário atual).
+/// - `updatedAt`: O timestamp de quando o usuário foi atualizado pela última vez (atualizado automaticamente).
+
+model Curtida {
+  id        String   @id @default(uuid())
+  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
+  usuarioId String
+  produto   Produto  @relation(fields: [produtoId], references: [id])
+  produtoId String
+  createdAt DateTime @default(now())
+}
+/// ## Modelo: Curtida
+/// Representa uma ação de "curtir" feita por um usuário em um produto.
+/// - `id`: Um identificador único para a curtida, gerado automaticamente como UUID.
+/// - `usuario`: Um relacionamento de muitos-para-um com o modelo `Usuario`, representando o usuário que curtiu o produto.
+/// - `usuarioId`: A chave estrangeira referenciando o modelo `Usuario`.
+/// - `produto`: Um relacionamento de muitos-para-um com o modelo `Produto`, representando o produto curtido.
+/// - `produtoId`: A chave estrangeira referenciando o modelo `Produto`.
+/// - `createdAt`: O timestamp de quando a curtida foi criada (padrão: horário atual).
+
+model Comentario {
+  id        String   @id @default(uuid())
+  conteudo  String
+  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
+  usuarioId String
+  produto   Produto  @relation(fields: [produtoId], references: [id])
+  produtoId String
+  createdAt DateTime @default(now())
+}
+/// ## Modelo: Comentario
+/// Representa um comentário feito por um usuário em um produto.
+/// - `id`: Um identificador único para o comentário, gerado automaticamente como UUID.
+/// - `conteudo`: O conteúdo do comentário.
+/// - `usuario`: Um relacionamento de muitos-para-um com o modelo `Usuario`, representando o usuário que fez o comentário.
+/// - `usuarioId`: A chave estrangeira referenciando o modelo `Usuario`.
+/// - `produto`: Um relacionamento de muitos-para-um com o modelo `Produto`, representando o produto comentado.
+/// - `produtoId`: A chave estrangeira referenciando o modelo `Produto`.
+/// - `createdAt`: O timestamp de quando o comentário foi criado (padrão: horário atual).
+
+model Produto {
+  id          String       @id @default(uuid())
+  nome        String
+  descricao   String?
+  preco       Float
+  curtidas    Curtida[]
+  comentarios Comentario[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+/// ## Modelo: Produto
+/// Representa um produto no sistema.
+/// - `id`: Um identificador único para o produto, gerado automaticamente como UUID.
+/// - `nome`: O nome do produto.
+/// - `descricao`: Uma descrição do produto (opcional).
+/// - `preco`: O preço do produto.
+/// - `curtidas`: Um relacionamento de um-para-muitos com o modelo `Curtida`, representando as curtidas recebidas pelo produto.
+/// - `comentarios`: Um relacionamento de um-para-muitos com o modelo `Comentario`, representando os comentários recebidos pelo produto.
+/// - `createdAt`: O timestamp de quando o produto foi criado (padrão: horário atual).
+/// - `updatedAt`: O timestamp de quando o produto foi atualizado pela última vez (atualizado automaticamente).
+
+/// ## Relacionamentos
+/// - `Usuario` possui um relacionamento de um-para-muitos com `Curtida` e `Comentario`.
+/// - `Curtida` e `Comentario` possuem relacionamentos de muitos-para-um com `Usuario` e `Produto`.
+/// - `Produto` possui um relacionamento de um-para-muitos com `Curtida` e `Comentario`.
+
+/// ## Notas
+/// - Use o atributo `@relation` para definir relacionamentos entre modelos.
+/// - Chaves estrangeiras (`usuarioId`, `produtoId`) são usadas para estabelecer esses relacionamentos.
+/// - Valores padrão como `@default(uuid())` e `@default(now())` garantem a geração automática de IDs e timestamps.
+/// - O atributo `@unique` garante que certos campos, como `email`, sejam únicos no banco de dados.
