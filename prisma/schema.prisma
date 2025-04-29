@@ -1,6 +1,7 @@
 generator client {
   provider = "prisma-client-js"
 }
+
 /// ## Gerador
 /// O bloco `generator` especifica o Prisma Client como a ferramenta a ser gerada.
 /// - `provider`: Especifica a biblioteca JavaScript do Prisma Client (`prisma-client-js`).
@@ -9,12 +10,13 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
 /// ## Fonte de Dados
 /// O bloco `datasource` define a conexão com o banco de dados.
 /// - `provider`: Especifica SQLite como o provedor do banco de dados.
 /// - `url`: A URL de conexão com o banco de dados é obtida da variável de ambiente `DATABASE_URL`.
 
-model Usuario {
+model User {
   id          String       @id @default(uuid())
   nome        String
   email       String       @unique
@@ -24,9 +26,13 @@ model Usuario {
   verificado  Boolean      @default(false)
   curtidas    Curtida[]
   comentarios Comentario[]
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("usuarios")
 }
+
 /// ## Modelo: Usuario
 /// Representa um usuário no sistema.
 /// - `id`: Um identificador único para o usuário, gerado automaticamente como UUID.
@@ -41,14 +47,18 @@ model Usuario {
 /// - `createdAt`: O timestamp de quando o usuário foi criado (padrão: horário atual).
 /// - `updatedAt`: O timestamp de quando o usuário foi atualizado pela última vez (atualizado automaticamente).
 
-model Curtida {
-  id        String   @id @default(uuid())
-  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
+model Like {
+  id        String  @id @default(uuid())
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
   usuarioId String
-  produto   Produto  @relation(fields: [produtoId], references: [id])
+  produto   Produto @relation(fields: [produtoId], references: [id])
+
   produtoId String
   createdAt DateTime @default(now())
+
+  @@map("curtidas")
 }
+
 /// ## Modelo: Curtida
 /// Representa uma ação de "curtir" feita por um usuário em um produto.
 /// - `id`: Um identificador único para a curtida, gerado automaticamente como UUID.
@@ -58,15 +68,20 @@ model Curtida {
 /// - `produtoId`: A chave estrangeira referenciando o modelo `Produto`.
 /// - `createdAt`: O timestamp de quando a curtida foi criada (padrão: horário atual).
 
-model Comentario {
-  id        String   @id @default(uuid())
+model Comment {
+  id        String  @id @default(uuid())
   conteudo  String
-  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
   usuarioId String
-  produto   Produto  @relation(fields: [produtoId], references: [id])
+  produto   Produto @relation(fields: [produtoId], references: [id])
   produtoId String
+
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("comentarios")
 }
+
 /// ## Modelo: Comentario
 /// Representa um comentário feito por um usuário em um produto.
 /// - `id`: Um identificador único para o comentário, gerado automaticamente como UUID.
@@ -77,16 +92,20 @@ model Comentario {
 /// - `produtoId`: A chave estrangeira referenciando o modelo `Produto`.
 /// - `createdAt`: O timestamp de quando o comentário foi criado (padrão: horário atual).
 
-model Produto {
+model Product {
   id          String       @id @default(uuid())
   nome        String
   descricao   String?
   preco       Float
   curtidas    Curtida[]
   comentarios Comentario[]
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("produtos")
 }
+
 /// ## Modelo: Produto
 /// Representa um produto no sistema.
 /// - `id`: Um identificador único para o produto, gerado automaticamente como UUID.
