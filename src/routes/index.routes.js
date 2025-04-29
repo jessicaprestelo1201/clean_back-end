@@ -1,17 +1,13 @@
 import express from "express";
-
-// Importar todas as Rotas
-import userModel from "../models/userModel.js";
-import authMiddleware from "../moddleware/authMiddleware.js";
+import userRoutes from "./userRoutes.js";
+import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
 // Rotas Públicas
-router.use("/auth", authRouter);
+router.use("/auth", userRoutes); // /auth/login, /auth/register
 
-// Rotas Particulares/Protegidas
-router.use(authMiddleware);
-router.use("/user", userRouter);
-
+// Rotas Protegidas
+router.use("/user", authMiddleware, userRoutes); // /user/:id, /user/update, etc.
 
 export default router;
