@@ -1,16 +1,21 @@
-const express = require('express');
-const cors = require('cors');
-const routes = require('./routes/index.routes');
+import express from "express";
+import { config } from "dotenv";
+import cors from "cors"; // Importa o middleware CORS
 
+import routes from "./routes/index.routes.js";
+
+config(); // Carrega variáveis de ambiente do arquivo .env
+const port = process.env.PORT || 4001; // Define a porta do servidor
+
+// Inicializa o Express
 const app = express();
+app.use(cors()); // Habilita CORS para todas as rotas
 
+app.use(express.json()); // Parse de JSON
 
-app.use(cors());
-app.use(express.json());
+app.use("/", routes);
 
-app.use('/api', routes);
-
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+// Iniciar o servidor
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
 });
