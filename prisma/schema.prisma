@@ -24,8 +24,8 @@ model User {
   idioma      String?
   fotoPerfil  String?
   verificado  Boolean      @default(false)
-  curtidas    Curtida[]
-  comentarios Comentario[]
+  curtidas    Like[]
+  comentarios Comment[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -49,9 +49,9 @@ model User {
 
 model Like {
   id        String  @id @default(uuid())
-  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+  usuario   User @relation(fields: [usuarioId], references: [id])
   usuarioId String
-  produto   Produto @relation(fields: [produtoId], references: [id])
+  produto   Product @relation(fields: [produtoId], references: [id])
 
   produtoId String
   createdAt DateTime @default(now())
@@ -71,9 +71,9 @@ model Like {
 model Comment {
   id        String  @id @default(uuid())
   conteudo  String
-  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+  usuario   User @relation(fields: [usuarioId], references: [id])
   usuarioId String
-  produto   Produto @relation(fields: [produtoId], references: [id])
+  produto   Product @relation(fields: [produtoId], references: [id])
   produtoId String
 
   createdAt DateTime @default(now())
@@ -97,8 +97,8 @@ model Product {
   nome        String
   descricao   String?
   preco       Float
-  curtidas    Curtida[]
-  comentarios Comentario[]
+  curtidas    Like[]
+  comentarios Comment[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
