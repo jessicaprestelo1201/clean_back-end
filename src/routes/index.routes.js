@@ -1,7 +1,7 @@
 import express from "express";
 
 // Importar todas as Rotas
-
+import userModel from "../models/userModel.js";
 import authMiddleware from "../moddleware/authMiddleware.js";
 
 const router = express.Router();
@@ -11,10 +11,7 @@ router.use("/auth", authRouter);
 
 // Rotas Particulares/Protegidas
 router.use(authMiddleware);
+router.use("/user", userRouter);
 
-router.use("/animes", animesRouter);
-router.use("/personagens", personagemRouter);
-router.use("/collections", collectionRouter);
-router.use("/cards", cardRouter);
 
 export default router;

@@ -1,36 +1,19 @@
 import jwt from "jsonwebtoken";
 
 const authMiddleware = (req, res, next) => {
-  const authHeader = req.headers.authorization;
+  const token = req.headers.authorization?.split(" ")[1];
 
-  // Verificar se o Token Existe
-  if (!authHeader) {
-    return res.status(401).json({ error: "Token não fornecido!" });
+  if (!token) {
+    return res.status(401).json({ error: "Acesso negado. Token não fornecido." });
   }
 
-  // Retirar o Token do Bearer Token
-  const parts = authHeader.split(" ");
-
-  if (parts.length !== 2) {
-    return res.status(401).json({ error: "Token com erro(s) de formatação!" });
-  }
-
-  const [schema, token] = parts;
-
-  // Verificar se o esquema é Bearer
-  if (schema !== "Bearer") {
-    return res.status(401).json({ error: "Token mal formatado!" });
-  }
-
-  // Validação do Token
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) {
-      return res.status(401).json({ error: "Token não é válido!" });
-    }
-
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.userId = decoded.id;
-    return next();
-  });
+    next();
+  } catch (error) {
+    res.status(401).json({ error: "Token inválido." });
+  }
 };
 
 export default authMiddleware;
