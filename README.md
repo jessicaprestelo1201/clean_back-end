@@ -83,31 +83,47 @@ Este documento contém instruções para testar as operações CRUD de usuários
 
 ### **Rotas de Comentários**
 
-#### 1. Criar Comentário
-- **Método:** `POST`  
-- **URL:** `http://localhost:4000/comments`  
-- **Headers:**  
-    - `Authorization: Bearer <seu_token>`  
-    - `Content-Type: application/json`  
-- **Body:**  
-    ```json
-    {
-        "produtoId": 1,
-        "content": "Ótimo produto!"
-    }
-    ```
+#### Criar Comentário
+- **Método:** POST
+- **Endpoint:** `/comments`
+- **Descrição:** Cria um novo comentário.
+- **Implementação no código:** `CommentController.create`
 
-#### 2. Listar Comentários por Produto
-- **Método:** `GET`  
-- **URL:** `http://localhost:4000/comments/product/:produtoId`  
+#### Listar Comentários por Produto
+- **Método:** GET
+- **Endpoint:** `/comments/product/:produtoId`
+- **Descrição:** Lista todos os comentários associados a um produto específico.
+- **Implementação no código:** `CommentController.getByProduct`
 
-#### 3. Deletar Comentário
-- **Método:** `DELETE`  
-- **URL:** `http://localhost:4000/comments/:id`  
-- **Headers:**  
-    - `Authorization: Bearer <seu_token>`  
+#### Deletar Comentário
+- **Método:** DELETE
+- **Endpoint:** `/comments/:id`
+- **Descrição:** Deleta um comentário específico pelo ID.
+- **Implementação no código:** `CommentController.delete`
 
----
+#### Buscar Todos os Comentários
+- **Método:** GET
+- **Endpoint:** `/comments`
+- **Descrição:** Retorna todos os comentários cadastrados.
+- **Implementação no código:** `CommentController.getAll`
+- **Nota:** Não está documentado no README.md atual.
+
+#### Buscar Comentário por ID
+- **Método:** GET
+- **Endpoint:** `/comments/:id`
+- **Descrição:** Retorna um comentário específico pelo ID.
+- **Implementação no código:** `CommentController.getById`
+- **Nota:** Não está documentado no README.md atual.
+
+#### Atualizar Comentário
+- **Método:** PUT
+- **Endpoint:** `/comments/:id`
+- **Descrição:** Atualiza um comentário específico pelo ID.
+- **Implementação no código:** `CommentController.update`
+- **Nota:** Não está documentado no README.md atual.
+
+#### Observação
+As rotas `GET /comments`, `GET /comments/:id`, e `PUT /comments/:id` precisam ser adicionadas ao README.md para alinhar a documentação com as funcionalidades implementadas no código.
 
 ### **Rotas de Likes**
 
