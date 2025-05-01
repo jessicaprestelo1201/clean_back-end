@@ -6,6 +6,7 @@ import UserController from "../controllers/userController.js";
 import CommentController from "../controllers/commentController.js";
 import LikeController from "../controllers/likeController.js";
 import ProductController from "../controllers/productController.js";
+import AvaliacaoController from "../controllers/avaliacaoController.js";
 
 const router = express.Router();
 
@@ -34,5 +35,12 @@ router.delete("/likes/:id", authMiddleware, LikeController.unlike);
 router.post("/products", ProductController.create);
 router.get("/products", ProductController.getAll);
 router.get("/products/:id", ProductController.getById);
+
+// Rotas de Avaliações
+router.post("/avaliacoes", AvaliacaoController.create); // Criar avaliação
+router.get("/avaliacoes", AvaliacaoController.getAll); // Listar todas as avaliações
+router.get("/avaliacoes/:id", AvaliacaoController.getById); // Buscar avaliação por ID
+router.put("/avaliacoes/:id", AvaliacaoController.update); // Atualizar avaliação
+router.delete("/avaliacoes/:id", AvaliacaoController.delete); // Deletar avaliação
 
 export default router;
