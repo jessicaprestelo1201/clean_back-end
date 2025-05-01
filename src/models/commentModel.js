@@ -5,7 +5,10 @@ class CommentModel {
   async create(data) {
     return await prisma.comment.create({
       data,
-      include: { user: true }
+      include: {
+        usuario: true, // Certifique-se de que o campo é `usuario` no schema.prisma
+        produto: true  // Certifique-se de que o campo é `produto` no schema.prisma
+      }
     });
   }
 
