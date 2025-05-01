@@ -1,17 +1,38 @@
 import express from "express";
-import userRoutes from "./userRoutes.js";
-import postRoutes from "./api/post.routes.js"; // Ajuste o caminho conforme necessário
 import authMiddleware from "../middleware/authMiddleware.js";
+
+// Importação dos controladores
+import UserController from "../controllers/userController.js";
+import CommentController from "../controllers/commentController.js";
+import LikeController from "../controllers/likeController.js";
+import ProductController from "../controllers/productController.js";
 
 const router = express.Router();
 
 // Rotas Públicas
-router.use("/auth", userRoutes); // /auth/register, /auth/login
+router.use("/auth", (await import("./authRoutes.js")).default); // /auth/register, /auth/login
 
-// Rotas de Usuário Protegidas
-router.use("/user", authMiddleware, userRoutes); // /user/:id, /user/update, etc.
+// Rotas de Usuário
+router.post("/user/register", UserController.register);
+router.post("/user/login", UserController.login);
+router.get("/user", authMiddleware, UserController.getAllUsers);
+router.get("/user/:id", authMiddleware, UserController.getUserById);
+router.put("/user/update", authMiddleware, UserController.update);
+router.delete("/user/delete", authMiddleware, UserController.delete);
 
-// Rotas de API (Posts)
-router.use("/api", postRoutes); // /api/posts
+// Rotas de Comentários
+router.post("/comments", authMiddleware, CommentController.create);
+router.get("/comments/product/:produtoId", CommentController.getByProduct);
+router.delete("/comments/:id", authMiddleware, CommentController.delete);
+
+// Rotas de Likes
+router.post("/likes", authMiddleware, LikeController.likeProduct);
+router.get("/likes/product/:produtoId", LikeController.getLikes);
+router.delete("/likes/:id", authMiddleware, LikeController.unlike);
+
+// Rotas de Produtos
+router.post("/products", ProductController.create);
+router.get("/products", ProductController.getAll);
+router.get("/products/:id", ProductController.getById);
 
 export default router;
