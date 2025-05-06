@@ -5,7 +5,10 @@ class LikeModel {
   async create(data) {
     return await prisma.like.create({
       data,
-      include: { user: true }
+      include: { 
+        usuario: true, // Corrigido para "usuario"
+        produto: true  // Corrigido para "produto"
+      }
     });
   }
 
@@ -21,7 +24,9 @@ class LikeModel {
   async getByProduct(produtoId) {
     return await prisma.like.findMany({
       where: { produtoId },
-      include: { user: true }
+      include: { 
+        usuario: true // Corrigido para "usuario"
+      }
     });
   }
 
@@ -29,7 +34,9 @@ class LikeModel {
   async getAllByUser(usuarioId) {
     return await prisma.like.findMany({
       where: { usuarioId },
-      include: { product: true }
+      include: { 
+        produto: true // Corrigido para "produto"
+      }
     });
   }
 
