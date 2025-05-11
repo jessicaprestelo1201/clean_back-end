@@ -4,31 +4,71 @@ class AvaliacaoController {
   // Criar avaliação
   async create(req, res) {
     try {
-      const { nota, comentario, produtoId } = req.body;
+      const { estrelas, comentario, produtoId, avaliacaoSite, nomeUsuario } =
+        req.body;
 
-      if (!nota || !produtoId) {
-        return res.status(400).json({ error: "Nota e ID do produto são obrigatórios." });
+      if (!estrelas || (avaliacaoSite === undefined && !produtoId)) {
+        return res
+          .status(400)
+          .json({
+            error:
+              "Estrelas, avaliação do site ou ID do produto são obrigatórios.",
+          });
       }
 
-      if (nota < 1 || nota > 5) {
-        return res.status(400).json({ error: "A nota deve estar entre 1 e 5." });
+      if (!nomeUsuario) {
+        return res
+          .status(400)
+          .json({ error: "O nome do usuário é obrigatório." });
+      }
+
+      if (estrelas < 1 || estrelas > 5) {
+        return res
+          .status(400)
+          .json({ error: "As estrelas devem estar entre 1 e 5." });
       }
 
       const avaliacao = await AvaliacaoModel.create({
-        nota,
+        estrelas,
         comentario,
         usuarioId: req.userId,
-        produtoId
+        produtoId,
+        avaliacaoSite: avaliacaoSite || false, // Define como `false` se não for enviado
+        nomeUsuario,
       });
 
       res.status(201).json({
         message: "Avaliação criada com sucesso.",
-        avaliacao
+        avaliacao,
       });
     } catch (error) {
-      res.status(500).json({ error: `Erro ao criar avaliação: ${error.message}` });
+      res
+        .status(500)
+        .json({ error: `Erro ao criar avaliação: ${error.message}` });
     }
   }
+
+  async getSiteReviews(req, res) {
+  try {
+    console.log("Iniciando busca de avaliações do site...");
+    const avaliacoes = await prisma.avaliacao.findMany({
+      where: { avaliacaoSite: true },
+    });
+    console.log("Avaliações encontradas no banco:", avaliacoes);
+
+    if (!avaliacoes || avaliacoes.length === 0) {
+      console.log("Nenhuma avaliação encontrada.");
+      return res
+        .status(404)
+        .json({ error: "Nenhuma avaliação encontrada para o site." });
+    }
+
+    res.status(200).json(avaliacoes);
+  } catch (error) {
+    console.error("Erro ao buscar avaliações do site:", error);
+    res.status(500).json({ error: "Erro ao buscar avaliações do site." });
+  }
+}
 
   // Buscar todas as avaliações
   async getAll(req, res) {
@@ -37,10 +77,12 @@ class AvaliacaoController {
 
       res.status(200).json({
         message: "Avaliações encontradas com sucesso.",
-        avaliacoes
+        avaliacoes,
       });
     } catch (error) {
-      res.status(500).json({ error: `Erro ao buscar avaliações: ${error.message}` });
+      res
+        .status(500)
+        .json({ error: `Erro ao buscar avaliações: ${error.message}` });
     }
   }
 
@@ -57,10 +99,12 @@ class AvaliacaoController {
 
       res.status(200).json({
         message: `Avaliação com ID ${id} encontrada com sucesso.`,
-        avaliacao
+        avaliacao,
       });
     } catch (error) {
-      res.status(500).json({ error: `Erro ao buscar avaliação: ${error.message}` });
+      res
+        .status(500)
+        .json({ error: `Erro ao buscar avaliação: ${error.message}` });
     }
   }
 
@@ -75,17 +119,21 @@ class AvaliacaoController {
       }
 
       if (nota < 1 || nota > 5) {
-        return res.status(400).json({ error: "A nota deve estar entre 1 e 5." });
+        return res
+          .status(400)
+          .json({ error: "A nota deve estar entre 1 e 5." });
       }
 
       const avaliacao = await AvaliacaoModel.update(id, { nota, comentario });
 
       res.status(200).json({
         message: `Avaliação com ID ${id} atualizada com sucesso.`,
-        avaliacao
+        avaliacao,
       });
     } catch (error) {
-      res.status(500).json({ error: `Erro ao atualizar avaliação: ${error.message}` });
+      res
+        .status(500)
+        .json({ error: `Erro ao atualizar avaliação: ${error.message}` });
     }
   }
 
@@ -96,9 +144,13 @@ class AvaliacaoController {
 
       await AvaliacaoModel.delete(id);
 
-      res.status(200).json({ message: `Avaliação com ID ${id} deletada com sucesso.` });
+      res
+        .status(200)
+        .json({ message: `Avaliação com ID ${id} deletada com sucesso.` });
     } catch (error) {
-      res.status(500).json({ error: `Erro ao deletar avaliação: ${error.message}` });
+      res
+        .status(500)
+        .json({ error: `Erro ao deletar avaliação: ${error.message}` });
     }
   }
 }

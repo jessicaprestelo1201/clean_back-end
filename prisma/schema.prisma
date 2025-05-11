@@ -96,11 +96,14 @@ model Product {
   nome        String
   descricao   String?
   preco       Float
-  categoria   String       // Nova categoria do produto
-  cor         String       // Cor do produto (exemplo: #fff)
+  categoria   String
+  cor         String?
+  linkMarca   String?      // Adicione este campo
+  categoriaMarca String?   // Adicione este campo, se necessário
+  imagem      String?
   curtidas    Like[]
   comentarios Comment[]
-  avaliacoes  Avaliacao[]  // Relacionamento com avaliações
+  avaliacoes  Avaliacao[]
 
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
@@ -123,15 +126,17 @@ model Product {
 /// - `updatedAt`: O timestamp de quando o produto foi atualizado pela última vez (atualizado automaticamente).
 
 model Avaliacao {
-  id          String  @id @default(uuid())
-  nota        Int     // Nota da avaliação (1 a 5)
-  comentario  String? // Comentário opcional
-  usuario     User    @relation(fields: [usuarioId], references: [id])
-  usuarioId   String
-  produto     Product @relation(fields: [produtoId], references: [id])
-  produtoId   String
-
-  createdAt   DateTime @default(now())
+  id             String   @id @default(uuid())
+  estrelas       Int      // Quantidade de estrelas (1 a 5)
+  comentario     String?  // Comentário opcional
+  avaliacaoSite  Boolean  // Indica se a avaliação é do site (true) ou de um produto (false)
+  nomeUsuario    String   // Nome de quem fez a avaliação
+  fotoUsuario    String?  // Foto de perfil de quem fez a avaliação
+  produto        Product? @relation(fields: [produtoId], references: [id]) // Produto é opcional se for avaliação do site
+  produtoId      String?
+  usuario        User?    @relation(fields: [usuarioId], references: [id]) // Relacionamento com o usuário
+  usuarioId      String?  // ID do usuário que fez a avaliação
+  createdAt      DateTime @default(now()) // Data de criação da avaliação
 
   @@map("avaliacoes")
 }

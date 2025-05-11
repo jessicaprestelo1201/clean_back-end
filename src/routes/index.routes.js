@@ -42,5 +42,6 @@ router.get("/avaliacoes", AvaliacaoController.getAll); // Listar todas as avalia
 router.get("/avaliacoes/:id", AvaliacaoController.getById); // Buscar avaliação por ID
 router.put("/avaliacoes/:id", AvaliacaoController.update); // Atualizar avaliação
 router.delete("/avaliacoes/:id", AvaliacaoController.delete); // Deletar avaliação
+router.get("/avaliacoes/site", AvaliacaoController.getSiteReviews);
 
 export default router;

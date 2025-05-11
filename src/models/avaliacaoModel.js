@@ -22,6 +22,15 @@ class AvaliacaoModel {
     });
   }
 
+  async getSiteReviews() {
+    return await prisma.avaliacao.findMany({
+      where: { avaliacaoSite: true }, // Apenas avaliações do site
+      include: {
+        usuario: true,
+      },
+    });
+  }
+
   // Buscar avaliação por ID
   async getById(id) {
     return await prisma.avaliacao.findUnique({
