@@ -7,15 +7,14 @@ import CommentController from "../controllers/commentController.js";
 import LikeController from "../controllers/likeController.js";
 import ProductController from "../controllers/productController.js";
 import AvaliacaoController from "../controllers/avaliacaoController.js";
+import authRoutes from "./authRoutes.js"; // Importação direta
 
 const router = express.Router();
 
 // Rotas Públicas
-router.use("/auth", (await import("./authRoutes.js")).default); // /auth/register, /auth/login
+router.use("/auth", authRoutes); // /auth/register, /auth/login
 
-// Rotas de Usuário
-router.post("/user/register", UserController.register);
-router.post("/user/login", UserController.login);
+// Rotas de Usuário (apenas protegidas)
 router.get("/user", authMiddleware, UserController.getAllUsers);
 router.get("/user/:id", authMiddleware, UserController.getUserById);
 router.put("/user/update", authMiddleware, UserController.update);
