@@ -10,7 +10,10 @@ const port = process.env.PORT || 4000;
 
 // Inicializa o Express
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true,
+}));
 app.use(express.json());
 
 // Middleware para logar requisições e respostas
