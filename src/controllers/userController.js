@@ -66,6 +66,20 @@ class UserController {
     }
   }
 
+  static async getProfile(req, res) {
+    try {
+      const user = await userModel.findUserById(req.userId);
+      if (!user) {
+        return res.status(404).json({ error: "Usuário não encontrado." });
+      }
+      // Não retornar a senha!
+      user.senha = undefined;
+      res.status(200).json({ user });
+    } catch (error) {
+      res.status(500).json({ error: "Erro ao buscar perfil." });
+    }
+  }
+
   // Buscar um usuário pelo ID
   static async getUserById(req, res) {
     try {
