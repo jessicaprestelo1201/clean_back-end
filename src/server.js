@@ -11,7 +11,10 @@ const port = process.env.PORT || 4000;
 // Inicializa o Express
 const app = express();
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: [
+    "http://localhost:3000",
+    "http://192.168.56.1:3000"
+  ],
   credentials: true,
 }));
 app.use(express.json());
