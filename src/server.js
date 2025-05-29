@@ -12,9 +12,10 @@ const port = process.env.PORT || 4000;
 const app = express();
 app.use(cors({
   origin: [
-    "http://localhost:3000", // Adicione esta linha!
+    "http://localhost:3000",
     "http://localhost:4000",
-    "http://10.88.200.199:4000"
+    "http://10.88.200.199:4000",
+    "https://clean-website-lake.vercel.app",
   ],
   credentials: true,
 }));
