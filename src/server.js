@@ -16,6 +16,7 @@ app.use(cors({
     "http://localhost:4000",
     "http://10.88.200.199:4000",
     "https://clean-website-lake.vercel.app",
+    "http://localhost:8081" 
   ],
   credentials: true,
 }));
