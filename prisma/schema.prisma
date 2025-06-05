@@ -2,19 +2,10 @@ generator client {
   provider = "prisma-client-js"
 }
 
-/// ## Gerador
-/// O bloco `generator` especifica o Prisma Client como a ferramenta a ser gerada.
-/// - `provider`: Especifica a biblioteca JavaScript do Prisma Client (`prisma-client-js`).
-
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
-
-/// ## Fonte de Dados
-/// O bloco `datasource` define a conexão com o banco de dados.
-/// - `provider`: Especifica SQLite como o provedor do banco de dados.
-/// - `url`: A URL de conexão com o banco de dados é obtida da variável de ambiente `DATABASE_URL`.
 
 model User {
   id          String       @id @default(uuid())
@@ -26,7 +17,7 @@ model User {
   verificado  Boolean      @default(false)
   curtidas    Like[]
   comentarios Comment[]
-  avaliacoes  Avaliacao[]  // Relacionamento com avaliações
+  avaliacoes  Avaliacao[]
 
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
@@ -34,118 +25,81 @@ model User {
   @@map("usuarios")
 }
 
-/// ## Modelo: Usuario
-/// Representa um usuário no sistema.
-/// - `id`: Um identificador único para o usuário, gerado automaticamente como UUID.
-/// - `nome`: O nome do usuário.
-/// - `email`: O email do usuário, que deve ser único.
-/// - `senha`: A senha do usuário.
-/// - `idioma`: O idioma preferido do usuário (opcional).
-/// - `fotoPerfil`: A URL da foto de perfil do usuário (opcional).
-/// - `verificado`: Um booleano indicando se o usuário está verificado (padrão: `false`).
-/// - `curtidas`: Um relacionamento de um-para-muitos com o modelo `Curtida`, representando as curtidas feitas pelo usuário.
-/// - `comentarios`: Um relacionamento de um-para-muitos com o modelo `Comentario`, representando os comentários feitos pelo usuário.
-/// - `avaliacoes`: Um relacionamento de um-para-muitos com o modelo `Avaliacao`, representando as avaliações feitas pelo usuário.
-/// - `createdAt`: O timestamp de quando o usuário foi criado (padrão: horário atual).
-/// - `updatedAt`: O timestamp de quando o usuário foi atualizado pela última vez (atualizado automaticamente).
-
 model Like {
-  id        String  @id @default(uuid())
-  usuario   User    @relation(fields: [usuarioId], references: [id])
-  usuarioId String
-  produto   Product @relation(fields: [produtoId], references: [id])
-  produtoId String
+  id           String     @id @default(uuid())
+  usuario      User?      @relation(fields: [usuarioId], references: [id])
+  usuarioId    String?
+  produto      Product?   @relation(fields: [produtoId], references: [id])
+  produtoId    String?
+  comentario   Comment?   @relation(fields: [comentarioId], references: [id])
+  comentarioId String?
+  artigo       Artigo?    @relation(fields: [artigoId], references: [id])
+  artigoId     String?
 
-  createdAt DateTime @default(now())
+  createdAt    DateTime   @default(now())
 
   @@map("curtidas")
 }
 
-/// ## Modelo: Curtida
-/// Representa uma ação de "curtir" feita por um usuário em um produto.
-/// - `id`: Um identificador único para a curtida, gerado automaticamente como UUID.
-/// - `usuario`: Um relacionamento de muitos-para-um com o modelo `Usuario`, representando o usuário que curtiu o produto.
-/// - `produto`: Um relacionamento de muitos-para-um com o modelo `Produto`, representando o produto curtido.
-/// - `createdAt`: O timestamp de quando a curtida foi criada (padrão: horário atual).
-
 model Comment {
-  id        String  @id @default(uuid())
-  conteudo  String
-  usuario   User    @relation(fields: [usuarioId], references: [id])
-  usuarioId String
-  produto   Product @relation(fields: [produtoId], references: [id])
-  produtoId String
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String     @id @default(uuid())
+  conteudo     String
+  usuario      User       @relation(fields: [usuarioId], references: [id])
+  usuarioId    String
+  produto      Product    @relation(fields: [produtoId], references: [id])
+  produtoId    String
+  curtidas     Like[]
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
 
   @@map("comentarios")
 }
 
-/// ## Modelo: Comentario
-/// Representa um comentário feito por um usuário em um produto.
-/// - `id`: Um identificador único para o comentário, gerado automaticamente como UUID.
-/// - `conteudo`: O conteúdo do comentário.
-/// - `usuario`: Um relacionamento de muitos-para-um com o modelo `Usuario`, representando o usuário que fez o comentário.
-/// - `produto`: Um relacionamento de muitos-para-um com o modelo `Produto`, representando o produto comentado.
-/// - `createdAt`: O timestamp de quando o comentário foi criado (padrão: horário atual).
-/// - `updatedAt`: O timestamp de quando o comentário foi atualizado pela última vez (atualizado automaticamente).
-
 model Product {
-  id          String       @id @default(uuid())
-  nome        String
-  descricao   String?
-  preco       Float
-  categoria   String
-  cor         String?
-  linkMarca   String?      // Adicione este campo
-  categoriaMarca String?   // Adicione este campo, se necessário
-  imagem      String?
-  curtidas    Like[]
-  comentarios Comment[]
-  avaliacoes  Avaliacao[]
+  id             String       @id @default(uuid())
+  nome           String
+  descricao      String?
+  preco          Float
+  categoria      String
+  cor            String?
+  linkMarca      String?
+  categoriaMarca String?
+  imagem         String?
+  curtidas       Like[]
+  comentarios    Comment[]
+  avaliacoes     Avaliacao[]
 
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
 
   @@map("produtos")
 }
 
-/// ## Modelo: Produto
-/// Representa um produto no sistema.
-/// - `id`: Um identificador único para o produto, gerado automaticamente como UUID.
-/// - `nome`: O nome do produto.
-/// - `descricao`: Uma descrição do produto (opcional).
-/// - `preco`: O preço do produto.
-/// - `categoria`: A categoria do produto.
-/// - `cor`: A cor do produto (exemplo: #fff).
-/// - `curtidas`: Um relacionamento de um-para-muitos com o modelo `Curtida`, representando as curtidas recebidas pelo produto.
-/// - `comentarios`: Um relacionamento de um-para-muitos com o modelo `Comentario`, representando os comentários recebidos pelo produto.
-/// - `avaliacoes`: Um relacionamento de um-para-muitos com o modelo `Avaliacao`, representando as avaliações feitas no produto.
-/// - `createdAt`: O timestamp de quando o produto foi criado (padrão: horário atual).
-/// - `updatedAt`: O timestamp de quando o produto foi atualizado pela última vez (atualizado automaticamente).
-
 model Avaliacao {
-  id             String   @id @default(uuid())
-  estrelas       Int      // Quantidade de estrelas (1 a 5)
-  comentario     String?  // Comentário opcional
-  avaliacaoSite  Boolean  // Indica se a avaliação é do site (true) ou de um produto (false)
-  nomeUsuario    String   // Nome de quem fez a avaliação
-  fotoUsuario    String?  // Foto de perfil de quem fez a avaliação
-  produto        Product? @relation(fields: [produtoId], references: [id]) // Produto é opcional se for avaliação do site
+  id             String    @id @default(uuid())
+  estrelas       Int
+  comentario     String?
+  avaliacaoSite  Boolean
+  nomeUsuario    String
+  fotoUsuario    String?
+  produto        Product?  @relation(fields: [produtoId], references: [id])
   produtoId      String?
-  usuario        User?    @relation(fields: [usuarioId], references: [id]) // Relacionamento com o usuário
-  usuarioId      String?  // ID do usuário que fez a avaliação
-  createdAt      DateTime @default(now()) // Data de criação da avaliação
+  usuario        User?     @relation(fields: [usuarioId], references: [id])
+  usuarioId      String?
+  createdAt      DateTime  @default(now())
 
   @@map("avaliacoes")
 }
 
-/// ## Modelo: Avaliacao
-/// Representa uma avaliação feita por um usuário em um produto.
-/// - `id`: Um identificador único para a avaliação, gerado automaticamente como UUID.
-/// - `nota`: A nota da avaliação (1 a 5).
-/// - `comentario`: Um comentário opcional sobre o produto.
-/// - `usuario`: Um relacionamento de muitos-para-um com o modelo `Usuario`, representando o usuário que fez a avaliação.
-/// - `produto`: Um relacionamento de muitos-para-um com o modelo `Produto`, representando o produto avaliado.
-/// - `createdAt`: O timestamp de quando a avaliação foi criada (padrão: horário atual).
+model Artigo {
+  id          String    @id @default(uuid())
+  titulo      String
+  descricao   String
+  imagem      String?
+  curtidas    Like[]
+  fontes      String    // Links das fontes, pode ser separado por vírgula ou JSON
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("artigos")
+}

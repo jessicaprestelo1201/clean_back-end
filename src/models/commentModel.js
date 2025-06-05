@@ -15,7 +15,7 @@ class CommentModel {
   // Buscar todos os comentários
   async getAll() {
     return await prisma.comment.findMany({
-      include: { user: true }
+      include: { usuario: true }
     });
   }
 
@@ -23,7 +23,7 @@ class CommentModel {
   async findById(id) {
     return await prisma.comment.findUnique({
       where: { id },
-      include: { user: true }
+      include: { usuario: true }
     });
   }
 
@@ -31,7 +31,7 @@ class CommentModel {
   async getByProduct(produtoId) {
     return await prisma.comment.findMany({
       where: { produtoId },
-      include: { user: true }
+      include: { usuario: true }
     });
   }
 
@@ -39,7 +39,8 @@ class CommentModel {
   async update(id, data) {
     return await prisma.comment.update({
       where: { id },
-      data
+      data,
+      include: { usuario: true }
     });
   }
 

@@ -49,26 +49,20 @@ class AvaliacaoController {
   }
 
   async getSiteReviews(req, res) {
-  try {
-    console.log("Iniciando busca de avaliações do site...");
-    const avaliacoes = await prisma.avaliacao.findMany({
-      where: { avaliacaoSite: true },
-    });
-    console.log("Avaliações encontradas no banco:", avaliacoes);
-
-    if (!avaliacoes || avaliacoes.length === 0) {
-      console.log("Nenhuma avaliação encontrada.");
-      return res
-        .status(404)
-        .json({ error: "Nenhuma avaliação encontrada para o site." });
+    try {
+      const avaliacoes = await AvaliacaoModel.getSiteReviews();
+  
+      if (!avaliacoes || avaliacoes.length === 0) {
+        return res
+          .status(404)
+          .json({ error: "Nenhuma avaliação encontrada para o site." });
+      }
+  
+      res.status(200).json(avaliacoes);
+    } catch (error) {
+      res.status(500).json({ error: "Erro ao buscar avaliações do site." });
     }
-
-    res.status(200).json(avaliacoes);
-  } catch (error) {
-    console.error("Erro ao buscar avaliações do site:", error);
-    res.status(500).json({ error: "Erro ao buscar avaliações do site." });
   }
-}
 
   // Buscar todas as avaliações
   async getAll(req, res) {
@@ -112,19 +106,19 @@ class AvaliacaoController {
   async update(req, res) {
     try {
       const { id } = req.params;
-      const { nota, comentario } = req.body;
+      const { estrelas, comentario } = req.body;
 
-      if (!nota) {
-        return res.status(400).json({ error: "Nota é obrigatória." });
+      if (!estrelas) {
+        return res.status(400).json({ error: "estrelas é obrigatória." });
       }
 
-      if (nota < 1 || nota > 5) {
+      if (estrelas < 1 || estrelas > 5) {
         return res
           .status(400)
-          .json({ error: "A nota deve estar entre 1 e 5." });
+          .json({ error: "A estrelas deve estar entre 1 e 5." });
       }
 
-      const avaliacao = await AvaliacaoModel.update(id, { nota, comentario });
+      const avaliacao = await AvaliacaoModel.update(id, { estrelas, comentario });
 
       res.status(200).json({
         message: `Avaliação com ID ${id} atualizada com sucesso.`,

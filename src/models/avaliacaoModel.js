@@ -24,10 +24,11 @@ class AvaliacaoModel {
 
   async getSiteReviews() {
     return await prisma.avaliacao.findMany({
-      where: { avaliacaoSite: true }, // Apenas avaliações do site
+      where: { avaliacaoSite: true },
       include: {
         usuario: true,
-      },
+        produto: true
+      }
     });
   }
 
