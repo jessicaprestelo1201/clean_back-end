@@ -30,6 +30,7 @@ router.delete("/comments/:id", authMiddleware, CommentController.delete);
 router.post("/likes", authMiddleware, LikeController.likeProduct);
 router.get("/likes/product/:produtoId", LikeController.getLikes);
 router.delete("/likes/:id", authMiddleware, LikeController.unlike);
+router.get("/likes/user/me", authMiddleware, LikeController.getUserLikes);
 
 // Rotas de Produtos
 router.post("/products", ProductController.create);

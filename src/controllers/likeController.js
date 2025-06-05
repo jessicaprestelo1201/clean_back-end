@@ -5,26 +5,24 @@ class LikeController {
   async likeProduct(req, res) {
     try {
       const { produtoId } = req.body;
-
+      const usuarioId = req.userId; // Pegue do token/session, NÃO do body!
+  
       if (!produtoId) {
-        return res.status(400).json({ error: "ID do produto é obrigatório." });
+        return res.status(400).json({ error: "produtoId é obrigatório." });
       }
-
-      // Verificar se o like já existe
-      const existingLike = await LikeModel.findByUserAndProduct(req.userId, produtoId);
+  
+      // Verifica se já existe like desse usuário para esse produto
+      const existingLike = await LikeModel.findByUserAndProduct(usuarioId, produtoId);
       if (existingLike) {
-        return res.status(400).json({ error: "Você já curtiu este produto." });
+        return res.status(400).json({ error: "Produto já curtido por este usuário." });
       }
-
+  
       const like = await LikeModel.create({
-        usuarioId: req.userId,
+        usuarioId,
         produtoId
       });
-
-      res.status(201).json({
-        message: `Produto ${produtoId} adicionado aos curtidos com sucesso.`,
-        like
-      });
+  
+      res.status(201).json({ message: "Produto curtido com sucesso.", like });
     } catch (error) {
       res.status(500).json({ error: `Erro ao curtir produto: ${error.message}` });
     }
@@ -81,6 +79,17 @@ class LikeController {
       });
     } catch (error) {
       res.status(500).json({ error: `Erro ao remover curtida: ${error.message}` });
+    }
+  }
+
+  // Buscar todas as curtidas de um usuário
+  async getUserLikes(req, res) {
+    try {
+      const usuarioId = req.userId; // Pega do token/session pelo authMiddleware
+      const likes = await LikeModel.getAllByUser(usuarioId);
+      res.json({ likes });
+    } catch (error) {
+      res.status(500).json({ error: "Erro ao buscar curtidas do usuário." });
     }
   }
 }

@@ -33,7 +33,7 @@ class AvaliacaoController {
         comentario,
         usuarioId: req.userId,
         produtoId,
-        avaliacaoSite: avaliacaoSite || false, // Define como `false` se não for enviado
+        avaliacaoSite: avaliacaoSite || false,
         nomeUsuario,
       });
 
