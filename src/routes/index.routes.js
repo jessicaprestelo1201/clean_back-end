@@ -7,7 +7,8 @@ import CommentController from "../controllers/commentController.js";
 import LikeController from "../controllers/likeController.js";
 import ProductController from "../controllers/productController.js";
 import AvaliacaoController from "../controllers/avaliacaoController.js";
-import authRoutes from "./authRoutes.js"; // Importação direta
+import ArticleController from "../controllers/articleController.js";
+import authRoutes from "./authRoutes.js";
 
 const router = express.Router();
 
@@ -36,11 +37,18 @@ router.get("/products", ProductController.getAll);
 router.get("/products/:id", ProductController.getById);
 
 // Rotas de Avaliações
-router.post("/avaliacoes", AvaliacaoController.create); // Criar avaliação
-router.get("/avaliacoes", AvaliacaoController.getAll); // Listar todas as avaliações
-router.get("/avaliacoes/:id", AvaliacaoController.getById); // Buscar avaliação por ID
-router.put("/avaliacoes/:id", AvaliacaoController.update); // Atualizar avaliação
-router.delete("/avaliacoes/:id", AvaliacaoController.delete); // Deletar avaliação
+router.post("/avaliacoes", AvaliacaoController.create);
+router.get("/avaliacoes", AvaliacaoController.getAll); 
+router.get("/avaliacoes/:id", AvaliacaoController.getById); 
+router.put("/avaliacoes/:id", AvaliacaoController.update); 
+router.delete("/avaliacoes/:id", AvaliacaoController.delete); 
 router.get("/avaliacoes/site", AvaliacaoController.getSiteReviews);
+
+// Rotas de Artigos
+router.post("/artigos", ArticleController.create);
+router.get("/artigos", ArticleController.getAll);
+router.get("/artigos/:id", ArticleController.getById);
+router.put("/artigos/:id", ArticleController.update);
+router.delete("/artigos/:id", ArticleController.delete);
 
 export default router;
