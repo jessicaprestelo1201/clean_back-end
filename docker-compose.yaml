@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    container_name: the_brazilian_stars
+    restart: unless-stopped
+    ports:
+      - "4002:4002"
+    environment:
+      - PORT=4002
+      - DATABASE_URL=file:./data/database.db
+      - JWT_SECRET=sua_chave_secreta_aqui
+    volumes:
+      - sqlite_data:/app/data
+
+volumes:
+  sqlite_data:
