@@ -216,7 +216,7 @@ const produtos = [
     cor: "#DBBD9C",
     linkMarca: "https://www.natura.com.br/",
     categoriaMarca: "Natura",
-    imagem: "https://www.natura.com.br/static/arquivos/ids/164404-800-auto?v=637538990300000000&width=800&height=auto&aspect=true",
+    imagem: "https://m.media-amazon.com/images/I/51OgZId7bvL.jpg",
   },
   {
     nome: "Body Splash Eudora Instance Amora Silvestre",
@@ -226,7 +226,7 @@ const produtos = [
     cor: "#DBBD9C",
     linkMarca: "https://www.eudora.com.br/",
     categoriaMarca: "Eudora",
-    imagem: "https://www.eudora.com.br/medias/sys_master/images/images/h9d/h7e/9000000000000.jpg",
+    imagem: "https://epocacosmeticos.vteximg.com.br/arquivos/ids/512890/spray-corporal-eudora-instance-amora-silvestre.jpg?v=638004246082030000",
   },
   {
     nome: "Spray Corporal Natura Ekos Açaí",
@@ -236,7 +236,7 @@ const produtos = [
     cor: "#DBBD9C",
     linkMarca: "https://www.natura.com.br/",
     categoriaMarca: "Natura",
-    imagem: "https://www.natura.com.br/static/arquivos/ids/164404-800-auto?v=637538990300000000&width=800&height=auto&aspect=true",
+    imagem: "https://fimgs.net/mdimg/perfume/375x500.25958.jpg",
   },
   {
     nome: "Loção Hidratante Avon Encanto Irresistível",
@@ -246,7 +246,7 @@ const produtos = [
     cor: "#DBBD9C",
     linkMarca: "https://www.avon.com.br/",
     categoriaMarca: "Avon",
-    imagem: "https://www.avon.com.br/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/l/o/locao-encanto.jpg",
+    imagem: "https://cdnmidias.s3.amazonaws.com/dedcosmeticosonline.com.br/wp-content/uploads/2021/09/19005116/products-locao-corporal-encanto-irresistivel-avon.jpg",
   },
   {
     nome: "Creme de Mãos Eudora Instance Baunilha",
@@ -256,7 +256,7 @@ const produtos = [
     cor: "#DBBD9C",
     linkMarca: "https://www.eudora.com.br/",
     categoriaMarca: "Eudora",
-    imagem: "https://www.eudora.com.br/medias/sys_master/images/images/h43/h13/9000000000000.jpg",
+    imagem: "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_800/v1/imagens/product/E51514/5fb5746b-753e-4ed5-97d1-65a1bdeda9fd-instance-creme-maos-30g-51514-frontal-1.jpg",
   },
   {
     nome: "Desodorante Colônia Natura Ekos Maracujá",
@@ -266,7 +266,7 @@ const produtos = [
     cor: "#DBBD9C",
     linkMarca: "https://www.natura.com.br/",
     categoriaMarca: "Natura",
-    imagem: "https://www.natura.com.br/static/arquivos/ids/164404-800-auto?v=637538990300000000&width=800&height=auto&aspect=true",
+    imagem: "https://acdn-us.mitiendanube.com/stores/004/088/357/products/screenshot-2023-12-29-at-11-22-31-natura-9e62219754d1cbfdaa17038598988287-1024-1024.png",
   },
   {
     nome: "Óleo Corporal Natura Sève Amêndoas Doces",
@@ -276,7 +276,7 @@ const produtos = [
     cor: "#DBBD9C",
     linkMarca: "https://www.natura.com.br/",
     categoriaMarca: "Natura",
-    imagem: "https://www.natura.com.br/static/arquivos/ids/164404-800-auto?v=637538990300000000&width=800&height=auto&aspect=true",
+    imagem: "https://cdn.dooca.store/109724/products/oleo-amendoas-doce2.jpg?v=1710790042",
   },
   {
     nome: "Sabonete Líquido Avon Encanto Delicadeza",
@@ -286,7 +286,7 @@ const produtos = [
     cor: "#DBBD9C",
     linkMarca: "https://www.avon.com.br/",
     categoriaMarca: "Avon",
-    imagem: "https://www.avon.com.br/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/s/a/sabonete-encanto.jpg",
+    imagem: "https://images.tcdn.com.br/img/img_prod/752601/encanto_fascinante_amp_sofisticada_sabonete_liquido_200ml_avon_3630_1_31ad5e59f0bcf6ce649f85c197fd3498.jpg",
   },
   {
     nome: "Body Splash Eudora La Piel",
@@ -296,7 +296,7 @@ const produtos = [
     cor: "#DBBD9C",
     linkMarca: "https://www.eudora.com.br/",
     categoriaMarca: "Eudora",
-    imagem: "https://www.eudora.com.br/medias/sys_master/images/images/h84/h29/9000000000000.jpg",
+    imagem: "https://a-static.mlcdn.com.br/470x352/spray-perfumado-desodorante-colonia-la-piel-ambar-dourado-200ml-eudora/shinecosmeticos/93069/78bee7b2fe52dc6f796118d526ee6bc3.jpeg",
   },
   {
     nome: "Loção Hidratante Natura Tododia Ameixa e Flor de Baunilha",
@@ -306,7 +306,7 @@ const produtos = [
     cor: "#DBBD9C",
     linkMarca: "https://www.natura.com.br/",
     categoriaMarca: "Natura",
-    imagem: "https://www.natura.com.br/static/arquivos/ids/164404-800-auto?v=637538990300000000&width=800&height=auto&aspect=true",
+    imagem: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-ltomp10puvjd3a",
   },
 ];
 // ...existing code...
