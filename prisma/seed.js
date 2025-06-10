@@ -52,7 +52,7 @@ const produtos = [
     cor: "#5FCED4",
     linkMarca: "https://www.avon.com.br/",
     categoriaMarca: "Avon",
-    imagem: "https://www.avon.com.br/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/g/e/gel-de-limpeza-facial.jpg",
+    imagem: "https://production.na01.natura.com/on/demandware.static/-/Sites-avon-br-storefront-catalog/default/dw2a9ab6d6/produtos/136036.jpg",
   },
   {
     nome: "Creme Facial Antissinais Avon",
@@ -62,7 +62,7 @@ const produtos = [
     cor: "#5FCED4",
     linkMarca: "https://www.avon.com.br/",
     categoriaMarca: "Avon",
-    imagem: "https://www.avon.com.br/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/c/r/creme-facial-antissinais.jpg",
+    imagem: "https://production.na01.natura.com/on/demandware.static/-/Sites-avon-br-storefront-catalog/default/dwffc22937/produtos/136024.jpg",
   },
   {
     nome: "Máscara Facial Detox Labotrat",
@@ -72,7 +72,7 @@ const produtos = [
     cor: "#5FCED4",
     linkMarca: "https://labotrat.com.br/",
     categoriaMarca: "Labotrat",
-    imagem: "https://labotrat.com.br/wp-content/uploads/2021/05/mascara-facial-detox.jpg",
+    imagem: "https://labotrat.com.br/wp-content/uploads/2024/08/MR-THOMAS_0004_MASCARA-DETOX-90G-MR-THOMAS.png",
   },
   {
     nome: "Tônico Facial Revitalizante Natura",
@@ -82,7 +82,7 @@ const produtos = [
     cor: "#5FCED4",
     linkMarca: "https://www.natura.com.br/",
     categoriaMarca: "Natura",
-    imagem: "https://www.natura.com.br/static/arquivos/ids/164414-800-auto?v=637539014700000000&width=800&height=auto&aspect=true",
+    imagem: "https://uploads.consultaremedios.com.br/product_variation_images/full/714a77014ef9cfda5b77b308ef4792ddd4c0db3c.jpg?1553116114",
   },
   {
     nome: "Creme Área dos Olhos Avon Anew",
@@ -92,7 +92,7 @@ const produtos = [
     cor: "#5FCED4",
     linkMarca: "https://www.avon.com.br/",
     categoriaMarca: "Avon",
-    imagem: "https://www.avon.com.br/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/c/r/creme-area-dos-olhos.jpg",
+    imagem: "https://http2.mlstatic.com/D_NQ_NP_951373-MLU72650503835_112023-O.webp",
   },
   {
     nome: "Eudora Instance Macaron de Framboesa Hidratante",
@@ -102,7 +102,7 @@ const produtos = [
     cor: "#5FCED4",
     linkMarca: "https://www.eudora.com.br/",
     categoriaMarca: "Eudora",
-    imagem: "https://www.eudora.com.br/medias/sys_master/images/images/h4f/h7d/9000000000000.jpg",
+    imagem: "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_800/v1/imagens/product/E54314/479d5a08-c3a2-40ba-9f96-ec89b40a96c9-e54314-instance-creme-macaron-framboesa-400ml-54314-frontal.jpg",
   },
 
   // === MAKE ===
