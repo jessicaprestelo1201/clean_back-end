@@ -114,7 +114,7 @@ const produtos = [
     cor: "#F05080",
     linkMarca: "https://www.kikocosmetics.com/",
     categoriaMarca: "Kiko Milano",
-    imagem: "https://www.kikocosmetics.com/dw/image/v2/BDBD_PRD/on/demandware.static/-/Sites-kiko-master-catalog/default/dw6b061b58/images/zoom/0000000000000.jpg",
+    imagem: "https://m.media-amazon.com/images/I/61yVQvXBlJL.jpg",
   },
   {
     nome: "Máscara de Cílios Super Shock Avon",
@@ -124,7 +124,7 @@ const produtos = [
     cor: "#F05080",
     linkMarca: "https://www.avon.com.br/",
     categoriaMarca: "Avon",
-    imagem: "https://www.avon.com.br/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/m/a/mascara-super-shock.jpg",
+    imagem: "https://production.na01.natura.com/on/demandware.static/-/Sites-avon-br-storefront-catalog/default/dwff70a4bd/produtos/135239.jpg",
   },
   {
     nome: "Base Fluida Una Natura",
@@ -134,7 +134,7 @@ const produtos = [
     cor: "#F05080",
     linkMarca: "https://www.natura.com.br/",
     categoriaMarca: "Natura",
-    imagem: "https://www.natura.com.br/static/arquivos/ids/164394-800-auto?v=637538981700000000&width=800&height=auto&aspect=true",
+    imagem: "https://production.na01.natura.com/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw1a7d63d9/Produtos/NATBRA-107757_1.jpg",
   },
   {
     nome: "Lápis de Olho Kiko Milano",
@@ -144,7 +144,7 @@ const produtos = [
     cor: "#F05080",
     linkMarca: "https://www.kikocosmetics.com/",
     categoriaMarca: "Kiko Milano",
-    imagem: "https://www.kikocosmetics.com/dw/image/v2/BDBD_PRD/on/demandware.static/-/Sites-kiko-master-catalog/default/dwc1bb98d9/images/zoom/0000000000000.jpg",
+    imagem: "https://cdn.iset.io/assets/54712/produtos/6899/intensecolorblack-kiko2.jpg",
   },
   {
     nome: "Paleta de Sombras Mark Avon",
@@ -154,7 +154,7 @@ const produtos = [
     cor: "#F05080",
     linkMarca: "https://www.avon.com.br/",
     categoriaMarca: "Avon",
-    imagem: "https://www.avon.com.br/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/p/a/paleta-sombras.jpg",
+    imagem: "https://a-static.mlcdn.com.br/1500x1500/mini-paleta-de-sombras-mark-matte-metalica-nude-marcante-5g-avon-cosmeticos/homepoint/se1392/68fd4621cab1496de8aa9d60a18aca1f.jpeg",
   },
   {
     nome: "Blush Compacto Natura Una",
@@ -164,7 +164,7 @@ const produtos = [
     cor: "#F05080",
     linkMarca: "https://www.natura.com.br/",
     categoriaMarca: "Natura",
-    imagem: "https://www.natura.com.br/static/arquivos/ids/164394-800-auto?v=637538981700000000&width=800&height=auto&aspect=true",
+    imagem: "https://images.rede.natura.net/image/sku/1200x1200/92584_1.jpg",
   },
   {
     nome: "Delineador Líquido Kiko Milano",
@@ -174,7 +174,7 @@ const produtos = [
     cor: "#F05080",
     linkMarca: "https://www.kikocosmetics.com/",
     categoriaMarca: "Kiko Milano",
-    imagem: "https://www.kikocosmetics.com/dw/image/v2/BDBD_PRD/on/demandware.static/-/Sites-kiko-master-catalog/default/dwf12fbe04/images/zoom/0000000000000.jpg",
+    imagem: "https://cdn.iset.io/assets/54712/produtos/6903/eyelinerblack-kikowater1.jpg",
   },
   {
     nome: "Batom Líquido Matte Eudora",
@@ -184,7 +184,7 @@ const produtos = [
     cor: "#F05080",
     linkMarca: "https://www.eudora.com.br/",
     categoriaMarca: "Eudora",
-    imagem: "https://www.eudora.com.br/medias/sys_master/images/images/h48/hcc/9000000000000.jpg",
+    imagem: "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_800/v1/imagens/products/E52699/EUD_52699_GLAM_BATOM-LIQUIDO_VINHO-SUBLIME_FRONTAL_01.jpg",
   },
   {
     nome: "Pó Compacto Eudora",
@@ -194,7 +194,7 @@ const produtos = [
     cor: "#F05080",
     linkMarca: "https://www.eudora.com.br/",
     categoriaMarca: "Eudora",
-    imagem: "https://www.eudora.com.br/medias/sys_master/images/images/h3a/hf4/9000000000000.jpg",
+    imagem: "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_800/v1/imagens/product/E52579/93185d9b-7b75-4f20-b633-1d478193c935-e52579-glam-po-compacto-planta-aberto.jpg",
   },
   {
     nome: "Iluminador Facial Glow Kiko Milano",
@@ -204,7 +204,7 @@ const produtos = [
     cor: "#F05080",
     linkMarca: "https://www.kikocosmetics.com/",
     categoriaMarca: "Kiko Milano",
-    imagem: "https://www.kikocosmetics.com/dw/image/v2/BDBD_PRD/on/demandware.static/-/Sites-kiko-master-catalog/default/dw17222c07/images/zoom/0000000000000.jpg",
+    imagem: "https://http2.mlstatic.com/D_Q_NP_795877-MLU76724833294_062024-O.webp",
   },
 
   // === BODY ===
