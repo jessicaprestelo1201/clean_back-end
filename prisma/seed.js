@@ -22,7 +22,7 @@ const produtos = [
     cor: "#5FCED4",
     linkMarca: "https://labotrat.com.br/",
     categoriaMarca: "Labotrat",
-    imagem: "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_800/v1/imagens/product/MP117064/a41be83f-0bb5-4ca8-94b9-81f695d50802-mp117064-sabonete-facial-labotrat-esfoliante-antiacne-80ml.png",
+    imagem: "https://cdn.sistemawbuy.com.br/arquivos/8bb02a0033f44bb0b93784367422718c/produtos/671a876e0f3d6/image-66-1-677ee09ae5406_mini.jpg",
   },
   {
     nome: "Sérum Vitamina C Natura",
