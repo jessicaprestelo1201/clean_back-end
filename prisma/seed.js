@@ -342,6 +342,11 @@ const usuarios = [
     email: "samuel.d.braga6@gmail.com",
     senha: await bcrypt.hash("nemTyConto45@", 10),
   },
+  {
+    nome: "Alexandra Aversani",
+    email: "alexandra.aversani@aluno.senai.br",
+    senha: await bcrypt.hash("Alexandra@aversani", 10),
+  },
 ];
 
 const avaliacoes = [
