@@ -9,7 +9,7 @@ const produtos = [
     descricao: "Sabonete esfoliante com ácido salicílico e melaleuca, ideal para peles acneicas.",
     preco: 50.07,
     categoria: "Skincare",
-    cor: "#ffffff",
+    cor: "#5FCED4",
     linkMarca: "https://labotrat.com.br/",
     categoriaMarca: "Labotrat",
     imagem: "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_800/v1/imagens/product/MP117064/a41be83f-0bb5-4ca8-94b9-81f695d50802-mp117064-sabonete-facial-labotrat-esfoliante-antiacne-80ml.png",
