@@ -22,7 +22,7 @@ const produtos = [
     cor: "#5FCED4",
     linkMarca: "https://labotrat.com.br/",
     categoriaMarca: "Labotrat",
-    imagem: "https://cdn.sistemawbuy.com.br/arquivos/8bb02a0033f44bb0b93784367422718c/produtos/671a876e0f3d6/image-66-1-677ee09ae5406_mini.jpg",
+    imagem: "https://www.google.com/url?sa=i&url=https%3A%2F%2Flabotrat.com.br%2Fproduto%2Fagua-micelar-2%2F&psig=AOvVaw14g56FTwQveX1_hj2VoosU&ust=1749646600056000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPC52tTz5o0DFQAAAAAdAAAAABAS",
   },
   {
     nome: "Sérum Vitamina C Natura",
@@ -32,7 +32,7 @@ const produtos = [
     cor: "#5FCED4",
     linkMarca: "https://www.natura.com.br/",
     categoriaMarca: "Natura",
-    imagem: "https://www.natura.com.br/static/arquivos/ids/164414-800-auto?v=637539014700000000&width=800&height=auto&aspect=true",
+    imagem: "https://production.na01.natura.com/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw10b3ac5b/NATBRA-131456_1.jpg",
   },
   {
     nome: "Chronos Protetor Solar FPS 70 Natura",
@@ -42,7 +42,7 @@ const produtos = [
     cor: "#5FCED4",
     linkMarca: "https://www.natura.com.br/",
     categoriaMarca: "Natura",
-    imagem: "https://www.natura.com.br/static/arquivos/ids/164414-800-auto?v=637539014700000000&width=800&height=auto&aspect=true",
+    imagem: "https://production.na01.natura.com/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw924290a6/Produtos/NATBRA-69049_1.jpg",
   },
   {
     nome: "Gel de Limpeza Facial Avon Clearskin",
