@@ -22,7 +22,7 @@ const produtos = [
     cor: "#5FCED4",
     linkMarca: "https://labotrat.com.br/",
     categoriaMarca: "Labotrat",
-    imagem: "https://www.google.com/url?sa=i&url=https%3A%2F%2Flabotrat.com.br%2Fproduto%2Fagua-micelar-2%2F&psig=AOvVaw14g56FTwQveX1_hj2VoosU&ust=1749646600056000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPC52tTz5o0DFQAAAAAdAAAAABAS",
+    imagem: "https://labotrat.com.br/wp-content/uploads/2024/08/DERMO-SKIN-VITAMINA-C_0006_Agua-Micelar-Vitamina-C-110ml.png",
   },
   {
     nome: "Sérum Vitamina C Natura",
@@ -32,7 +32,7 @@ const produtos = [
     cor: "#5FCED4",
     linkMarca: "https://www.natura.com.br/",
     categoriaMarca: "Natura",
-    imagem: "https://production.na01.natura.com/on/demandware.static/-/Sites-natura-br-storefront-catalog/default/dw10b3ac5b/NATBRA-131456_1.jpg",
+    imagem: "https://naturabrasil.fr/cdn/shop/files/antioxidant-thumb_0a25c1ae-0f2b-41a9-b88e-898d326cbc17_grande.png?v=1741873038",
   },
   {
     nome: "Chronos Protetor Solar FPS 70 Natura",
