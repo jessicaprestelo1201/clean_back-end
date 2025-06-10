@@ -12,7 +12,7 @@ const produtos = [
     cor: "#5FCED4",
     linkMarca: "https://labotrat.com.br/",
     categoriaMarca: "Labotrat",
-    imagem: "https://labotrat.com.br/wp-content/uploads/2021/05/sabonete-facial-antiacne.jpg",
+    imagem: "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_800/v1/imagens/product/MP117064/a41be83f-0bb5-4ca8-94b9-81f695d50802-mp117064-sabonete-facial-labotrat-esfoliante-antiacne-80ml.png",
   },
   {
     nome: "Água Micelar Labotrat",
@@ -22,7 +22,7 @@ const produtos = [
     cor: "#5FCED4",
     linkMarca: "https://labotrat.com.br/",
     categoriaMarca: "Labotrat",
-    imagem: "https://labotrat.com.br/wp-content/uploads/2021/05/agua-micelar.jpg",
+    imagem: "https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_800/v1/imagens/product/MP117064/a41be83f-0bb5-4ca8-94b9-81f695d50802-mp117064-sabonete-facial-labotrat-esfoliante-antiacne-80ml.png",
   },
   {
     nome: "Sérum Vitamina C Natura",
